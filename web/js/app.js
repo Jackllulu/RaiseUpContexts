@@ -78,14 +78,13 @@ function el(html) {
 }
 
 function pendingStrip() {
-  return el(`
-    <div class="pending">
-      <strong>待确认</strong>（演示占位，不挡使用）<br/>
-      ① 个人主体类目 / 一次性订阅模板能否过审<br/>
-      ② 细稿权威来源与法务免责原文<br/>
-      ③ 节拍边角见「我的 · 免责」与仓库 docs/demo-open-questions.md
-    </div>
-  `);
+  return "";
+}
+
+function fillPending() {
+  const elp = document.getElementById("pending-strip");
+  if (!elp) return;
+  elp.innerHTML = `<strong>待确认</strong> ①个人主体类目/一次性订阅模板能否过审 ②细稿权威来源与法务免责原文 ③节拍假设见「我的·免责」/ docs/demo-open-questions.md`;
 }
 
 function roleChip(role) {
@@ -286,8 +285,15 @@ function pushSimulation(todayItems) {
   if (muted) {
     return `<div class="notice"><h3>推送模拟</h3><p class="tiny">已静音，不展示服务通知，也不消耗票。</p></div>`;
   }
+  const preview = todayItems
+    .map((s) => `${ROLE_LABEL[s.item.role]} · ${TYPE_LABEL[s.item.type]} · ${s.item.title}`)
+    .join("<br/>");
   if (tickets <= 0 && !sent) {
-    return `<div class="notice"><h3>推送模拟</h3><p class="tiny">无票：当天不发。日历事项仍在下方。</p></div>`;
+    return `<div class="notice"><h3>今日合并服务通知（未发送）</h3>
+      <p class="tiny">无票：当天不发，日历仍可用。以下是本会合并进 ≤1 条服务通知的条目。</p>
+      <p>${preview}</p>
+      <button class="btn-primary" data-go="/me/tickets">去续票</button>
+    </div>`;
   }
   const sampleT0 = todayItems[0].t0;
   const gate = pushDayForHour(state.demoDate, hour, sampleT0);
@@ -297,9 +303,7 @@ function pushSimulation(todayItems) {
   if (gate.delayed && gate.sendOn !== state.demoDate) {
     return `<div class="notice"><h3>推送模拟</h3><p class="tiny">当前 ${hour}:00，处于 21:00–8:00，顺延至 ${gate.sendOn} 上午。不在此刻下发。</p></div>`;
   }
-  const lines = todayItems
-    .map((s) => `${ROLE_LABEL[s.item.role]} · ${TYPE_LABEL[s.item.type]} · ${s.item.title}（为何是现在：相对 T0 ${s.t0}）`)
-    .join("<br/>");
+  const lines = preview;
   return `<div class="notice">
     <h3>今日合并服务通知（≤1/天）</h3>
     <p class="tiny">角色标签 + 阶段 + 今天做什么。点条目进详情。本模拟将消耗 1 票（每天最多一次）。</p>
@@ -876,6 +880,7 @@ function render() {
     view.innerHTML = renderLaunch();
     nav("新生日历");
     tabs("");
+    fillPending();
     afterRender({ path: "/launch", parts: ["launch"] });
     return;
   }
@@ -904,6 +909,7 @@ function render() {
     html = (map[r.path] || renderLaunch)();
   }
   view.innerHTML = html;
+  fillPending();
   afterRender(r);
 }
 

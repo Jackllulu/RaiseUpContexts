@@ -141,6 +141,10 @@ body {
   font-size: 12px;
   line-height: 1.5;
 }
+.pending.sticky {
+  margin: 0 10px 8px;
+  flex-shrink: 0;
+}
 .banner.warn { background: #fff1e8; border-color: #f0c8b0; color: #7a3b16; }
 .banner.ok { background: #eaf6ef; border-color: #cfe6d8; color: var(--ok); }
 .banner.mute { background: #eeeef6; }
