@@ -1,0 +1,7 @@
+{
+  "miniprogramRoot": "./",
+  "projectname": "xinsheng-rili-skeleton",
+  "description": "IA skeleton only. Run the web demo.",
+  "appid": "touristappid",
+  "compileType": "miniprogram"
+}
