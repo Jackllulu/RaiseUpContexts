@@ -1,0 +1,34 @@
+{
+  "pages": [
+    "pages/launch/launch",
+    "pages/onboarding/onboarding",
+    "pages/join/join",
+    "pages/calendar/calendar",
+    "pages/item/item",
+    "pages/makeup/makeup",
+    "pages/family/family",
+    "pages/child/child",
+    "pages/parents/parents",
+    "pages/tags/tags",
+    "pages/me/me",
+    "pages/me-sub/tickets",
+    "pages/me-sub/mute",
+    "pages/me-sub/invite",
+    "pages/me-sub/disclaimer",
+    "pages/me-sub/exit"
+  ],
+  "window": {
+    "navigationBarTitleText": "新生日历",
+    "navigationBarBackgroundColor": "#fffaf3",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#7a6d60",
+    "selectedColor": "#c45c26",
+    "list": [
+      { "pagePath": "pages/calendar/calendar", "text": "日历" },
+      { "pagePath": "pages/family/family", "text": "家庭" },
+      { "pagePath": "pages/me/me", "text": "我的" }
+    ]
+  }
+}

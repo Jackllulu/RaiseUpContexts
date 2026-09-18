@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>新生日历 · 可测演示</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="side">
+        <h1>新生日历</h1>
+        <p>浏览器演示，镜像小程序信息架构（底栏 日历 · 家庭 · 我的）。无真实微信接口，样例数据在本地。</p>
+        <div class="hint" id="run-hint">
+          本页即可点完首次建档、日历双角色、详情勾选、补课包、家庭标签、续票/静音/邀请/免责。
+          右侧「演示时钟」可拨到 T-14 / T0 / 过期日验证节拍。
+        </div>
+      </aside>
+      <div class="phone">
+        <div class="phone-inner">
+          <div class="status-bar">
+            <span id="clock-label">10:00</span>
+            <span>新生日历演示</span>
+            <span id="ticket-label">票 0</span>
+          </div>
+          <div class="nav-top" id="nav-top"></div>
+          <div class="content" id="view"></div>
+          <nav class="tabbar" id="tabbar" hidden></nav>
+        </div>
+      </div>
+      <aside class="side demo-panel">
+        <div class="hint">
+          <h3>演示工具（非小程序 UI）</h3>
+          <label class="field">今天（演示日期）</label>
+          <input type="date" id="demo-date" />
+          <label class="field">小时（夜间 21:00–8:00 顺延）</label>
+          <input type="number" id="demo-hour" min="0" max="23" />
+          <div class="btn-row">
+            <button class="btn" id="preset-late">填入孕 32 周演示家</button>
+          </div>
+          <p class="tiny">预设会重建家庭：上海、预产期使「今天」落在孕 32 周，便于看到细稿。也可走左侧向导手填。</p>
+          <p class="tiny" id="stage-readout"></p>
+        </div>
+      </aside>
+    </div>
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>
