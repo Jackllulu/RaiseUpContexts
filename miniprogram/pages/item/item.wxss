@@ -1,0 +1,1 @@
+.box{padding:24rpx;display:flex;flex-direction:column;gap:16rpx}.tiny{color:#7a6d60;font-size:24rpx}

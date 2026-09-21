@@ -1,0 +1,4 @@
+<view class="box">
+  <text>免责声明</text>
+  <text class="tiny">可测演示请用浏览器打开仓库 web/（npm start），本页仅为 IA 对齐空壳。</text>
+</view>
